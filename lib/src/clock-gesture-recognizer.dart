@@ -5,8 +5,11 @@ class ClockGestureRecognizer extends OneSequenceGestureRecognizer {
   final Function panUpdate;
   final Function panEnd;
 
-  ClockGestureRecognizer(
-      {required this.panStart, required this.panUpdate, required this.panEnd});
+  ClockGestureRecognizer({
+    required this.panStart,
+    required this.panUpdate,
+    required this.panEnd,
+  });
 
   @override
   void addPointer(PointerEvent event) {

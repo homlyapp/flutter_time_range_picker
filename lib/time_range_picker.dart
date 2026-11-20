@@ -1,5 +1,4 @@
-library time_range_picker;
+/// Compatibility entry point. Prefer time_range_picker_plus.dart.
+library;
 
-export 'src/utils.dart';
-export 'src/time-range-dialog.dart';
-export 'src/clock-painter.dart';
+export 'time_range_picker_plus.dart';

@@ -1,7 +1,7 @@
 import 'dart:math';
 
-import 'package:flutter/material.dart';
-import 'package:time_range_picker/src/utils.dart';
+import 'package:material_ui/material_ui.dart';
+import 'package:time_range_picker_plus/src/utils.dart';
 
 class ClockPainter extends CustomPainter {
   double? startAngle;
@@ -94,13 +94,15 @@ class ClockPainter extends CustomPainter {
       var sweep = calcSweepAngle(start, end);
 
       canvas.drawArc(
-          rect, start, sweep, paintingStyle == PaintingStyle.fill, paint);
+        rect,
+        start,
+        sweep,
+        paintingStyle == PaintingStyle.fill,
+        paint,
+      );
     }
 
-    drawTicks(
-      paint,
-      canvas,
-    );
+    drawTicks(paint, canvas);
 
     paint.color = strokeColor;
     paint.strokeWidth = strokeWidth;
@@ -110,16 +112,18 @@ class ClockPainter extends CustomPainter {
       var sweep = calcSweepAngle(start, end);
 
       canvas.drawArc(
-          rect, start, sweep, paintingStyle == PaintingStyle.fill, paint);
+        rect,
+        start,
+        sweep,
+        paintingStyle == PaintingStyle.fill,
+        paint,
+      );
 
       drawHandler(paint, canvas, ActiveTime.Start, start);
       drawHandler(paint, canvas, ActiveTime.End, end);
     }
 
-    drawLabels(
-      paint,
-      canvas,
-    );
+    drawLabels(paint, canvas);
 
     canvas.save();
     canvas.restore();
@@ -145,51 +149,57 @@ class ClockPainter extends CustomPainter {
       _endHandlerPosition = handlerPosition;
   }
 
-  void drawTicks(
-    Paint paint,
-    Canvas canvas,
-  ) {
+  void drawTicks(Paint paint, Canvas canvas) {
     var r = radius + ticksOffset - strokeWidth / 2;
     paint.color = ticksColor;
     paint.strokeWidth = ticksWidth;
     List.generate(ticks!, (i) => i + 1).forEach((i) {
       double angle = (360 / ticks!) * i * pi / 180 + offsetRad;
-      canvas.drawLine(calcCoords(radius, radius, angle, r),
-          calcCoords(radius, radius, angle, r + ticksLength), paint);
+      canvas.drawLine(
+        calcCoords(radius, radius, angle, r),
+        calcCoords(radius, radius, angle, r + ticksLength),
+        paint,
+      );
     });
   }
 
-  void drawLabels(
-    Paint paint,
-    Canvas canvas,
-  ) {
+  void drawLabels(Paint paint, Canvas canvas) {
     labels.forEach((label) {
       drawText(
-          canvas,
-          paint,
-          label.text,
-          calcCoords(
-              radius, radius, label.angle + offsetRad, radius + labelOffset),
-          label.angle + offsetRad);
+        canvas,
+        paint,
+        label.text,
+        calcCoords(
+          radius,
+          radius,
+          label.angle + offsetRad,
+          radius + labelOffset,
+        ),
+        label.angle + offsetRad,
+      );
     });
   }
 
   void drawText(
-      Canvas canvas, Paint paint, String text, Offset position, double angle) {
+    Canvas canvas,
+    Paint paint,
+    String text,
+    Offset position,
+    double angle,
+  ) {
     angle = normalizeAngle(angle);
 
-    TextSpan span = new TextSpan(
-      text: text,
-      style: labelStyle,
-    );
+    TextSpan span = new TextSpan(text: text, style: labelStyle);
     _textPainter = new TextPainter(
       text: span,
       textAlign: TextAlign.center,
       textDirection: TextDirection.ltr,
     );
     _textPainter.layout();
-    Offset drawCenter =
-        Offset(-(_textPainter.width / 2), -(_textPainter.height / 2));
+    Offset drawCenter = Offset(
+      -(_textPainter.width / 2),
+      -(_textPainter.height / 2),
+    );
 
     if (rotateLabels) {
       bool flipLabel = false;
@@ -228,7 +238,9 @@ class ClockPainter extends CustomPainter {
 
         // adjust alignment of the letter (vertically centered)
         drawCenter = Offset(
-            flipLabel ? -_textPainter.width : 0, -(_textPainter.height / 2));
+          flipLabel ? -_textPainter.width : 0,
+          -(_textPainter.height / 2),
+        );
 
         //move canvas to letter position
         canvas.translate(letterPos.dx, letterPos.dy);

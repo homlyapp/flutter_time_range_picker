@@ -1,6 +1,10 @@
-# Time Range Picker
+# Time Range Picker Plus
 
-A time range picker for flutter.
+A time range picker for Flutter, forked from [time_range_picker](https://github.com/Chris1234567899/flutter_time_range_picker).
+
+Requires Flutter >=3.47.0 and Dart >=3.13.0. Version 3.0.0 migrates public Material types (including `TimeOfDay`) to `package:material_ui/material_ui.dart`. Update application imports too: legacy SDK Material types are distinct and cannot be passed to this API. The Cupertino example uses `package:cupertino_ui/cupertino_ui.dart`.
+
+For translated dialogs, configure `MaterialApp.localizationsDelegates` with `GlobalMaterialLocalizations.delegates` and set `supportedLocales`.
 
 ## Getting Started
 
@@ -30,14 +34,14 @@ Add
 
 ```bash
 
-time_range_picker : any
+time_range_picker_plus: ^3.0.0
 
 ```
 
 to your pubspec.yaml, and run
 
 ```bash
-flutter packages get
+flutter pub get
 ```
 
 in your project's root directory.
@@ -46,9 +50,9 @@ in your project's root directory.
 
 
 ```dart
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
-import 'package:time_range_picker/time_range_picker.dart';
+import 'package:time_range_picker_plus/time_range_picker_plus.dart';
 
 void main() => runApp(MyApp());
 
@@ -126,7 +130,7 @@ class MyHomePage extends StatelessWidget {
 | TimeOfDay           | start               | TimeOfDay.now()             | preselected start time                                                          |     |
 | TimeOfDay           | end                 | now + 3h                    | preselected end time                                                            |     |
 | TimeRange           | disabledTime        |                             | disabled time range (this time cannot be selected)                              |     |
-| Color               | disabledColor       | Colors.red.withOpacity(0.5) | the color for the disabled section                                              |     |
+| Color               | disabledColor       | Colors.red.withValues(alpha: 0.5) | the color for the disabled section                                              |     |
 | PaintingStyle       | paintingStyle       | PaintingStyle.stroke        | Style of the arc (filled or stroke)                                             |     |
 | Function(TimeOfDay) | onStartChange       |                             |                                                                                 |     |
 | Function(TimeOfDay) | onEndChange         |                             |                                                                                 |     |
