@@ -1,3 +1,7 @@
+## 3.0.1
+
+* Add repository and issue tracker metadata for pub.dev.
+
 ## 3.0.0
 
 * Rename the fork to time_range_picker_plus.
