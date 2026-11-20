@@ -1,5 +1,6 @@
 import 'dart:math';
-import 'package:flutter/material.dart';
+
+import 'package:material_ui/material_ui.dart';
 
 //normalize angle
 double normalizeAngle(double radians) {
@@ -59,8 +60,11 @@ class ClockLabel {
     return ClockLabel(angle: angle, text: text);
   }
 
-  factory ClockLabel.fromIndex(
-      {required int idx, required int length, required String text}) {
+  factory ClockLabel.fromIndex({
+    required int idx,
+    required int length,
+    required String text,
+  }) {
     double angle = (2 * pi / length) * idx + pi / 2;
 
     return ClockLabel(angle: angle, text: text);

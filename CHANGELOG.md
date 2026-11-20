@@ -1,3 +1,11 @@
+## 3.0.0
+
+* Rename the fork to time_range_picker_plus.
+* Migrate Material APIs to material_ui and Cupertino examples to cupertino_ui. This is a breaking change for callers using SDK Material types.
+* Require Flutter >=3.47.0 and Dart >=3.13.0.
+* Update dependencies and replace deprecated widget/color APIs.
+* Preserve the time_range_picker.dart entry point under the new package name.
+
 ## [1.0.0] - TODO: Add release date.
 
 * Initial release
