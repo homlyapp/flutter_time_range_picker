@@ -1,3 +1,7 @@
+## 3.0.2
+
+* Add dartdoc comments for the public library, time range types, clock labels, and helper functions.
+
 ## 3.0.1
 
 * Add repository and issue tracker metadata for pub.dev.

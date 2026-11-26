@@ -5,6 +5,10 @@ import 'package:time_range_picker_plus/src/clock-gesture-recognizer.dart';
 import 'package:time_range_picker_plus/src/clock-painter.dart';
 import 'package:time_range_picker_plus/src/utils.dart';
 
+/// Opens a circular time range picker in a dialog.
+///
+/// Returns the confirmed [TimeRange], or null when the dialog is dismissed.
+/// [start] and [end] set the initial selection; [interval] sets its time steps.
 Future<TimeRange?> showTimeRangePicker({
   required BuildContext context,
 
