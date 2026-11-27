@@ -34,7 +34,7 @@ Add
 
 ```bash
 
-time_range_picker_plus: ^3.0.2
+time_range_picker_plus: ^3.0.3
 
 ```
 

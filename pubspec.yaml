@@ -1,6 +1,6 @@
 name: time_range_picker_plus
 description: A time range picker for flutter. This widget let's you open a dialog to choose a timeframe with start and end time.
-version: 3.0.2
+version: 3.0.3
 repository: https://github.com/homlyapp/flutter_time_range_picker
 issue_tracker: https://github.com/homlyapp/flutter_time_range_picker/issues
 
@@ -16,6 +16,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  lints: ^6.1.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

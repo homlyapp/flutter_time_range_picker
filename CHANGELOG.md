@@ -1,3 +1,8 @@
+## 3.0.3
+
+* Fix all 12 core lint issues reported by pub.dev, including file names, explicit types, and control flow braces.
+* Enable Dart core lint rules for ongoing static analysis.
+
 ## 3.0.2
 
 * Add dartdoc comments for the public library, time range types, clock labels, and helper functions.

@@ -38,11 +38,11 @@ class ClockPainter extends CustomPainter {
   bool autoAdjustLabels;
 
   double offsetRad;
-  get startHandlerPosition {
+  Offset? get startHandlerPosition {
     return _startHandlerPosition;
   }
 
-  get endHandlerPosition {
+  Offset? get endHandlerPosition {
     return _endHandlerPosition;
   }
 
@@ -143,10 +143,11 @@ class ClockPainter extends CustomPainter {
     paint.strokeWidth = 2;
     canvas.drawCircle(handlerPosition, handlerRadius * 1.5, paint);
 
-    if (type == ActiveTime.Start)
+    if (type == ActiveTime.Start) {
       _startHandlerPosition = handlerPosition;
-    else
+    } else {
       _endHandlerPosition = handlerPosition;
+    }
   }
 
   void drawTicks(Paint paint, Canvas canvas) {
@@ -282,7 +283,8 @@ class ClockPainter extends CustomPainter {
   double calcSweepAngle(double init, double end) {
     if (end > init) {
       return end - init;
-    } else
+    } else {
       return 2 * pi - (end - init).abs();
+    }
   }
 }

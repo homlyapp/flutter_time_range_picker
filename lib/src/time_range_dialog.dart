@@ -1,8 +1,8 @@
 import 'dart:math';
 
 import 'package:material_ui/material_ui.dart';
-import 'package:time_range_picker_plus/src/clock-gesture-recognizer.dart';
-import 'package:time_range_picker_plus/src/clock-painter.dart';
+import 'package:time_range_picker_plus/src/clock_gesture_recognizer.dart';
+import 'package:time_range_picker_plus/src/clock_painter.dart';
 import 'package:time_range_picker_plus/src/utils.dart';
 
 /// Opens a circular time range picker in a dialog.
@@ -338,7 +338,7 @@ class TimeRangePickerState extends State<TimeRangePicker>
     WidgetsBinding.instance.addPostFrameCallback((_) => setRadius());
   }
 
-  setRadius() {
+  void setRadius() {
     RenderBox? wrapper =
         _wrapperKey.currentContext?.findRenderObject() as RenderBox?;
     if (wrapper != null) {
@@ -421,16 +421,15 @@ class TimeRangePickerState extends State<TimeRangePicker>
     CustomPaint customPaint = _circleKey.currentWidget as CustomPaint;
     ClockPainter _clockPainter = customPaint.painter as ClockPainter;
 
-    if (_clockPainter.startHandlerPosition == null) {
+    final startHandlerPosition = _clockPainter.startHandlerPosition;
+    if (startHandlerPosition == null) {
       setState(() {
         _activeTime = ActiveTime.Start;
       });
       return false;
     }
 
-    Offset globalStartOffset = circle.localToGlobal(
-      _clockPainter.startHandlerPosition,
-    );
+    Offset globalStartOffset = circle.localToGlobal(startHandlerPosition);
     if (globalPoint.dx < globalStartOffset.dx + snap &&
         globalPoint.dx > globalStartOffset.dx - snap &&
         globalPoint.dy < globalStartOffset.dy + snap &&
@@ -441,16 +440,15 @@ class TimeRangePickerState extends State<TimeRangePicker>
       isHandler = true;
     }
 
-    if (_clockPainter.endHandlerPosition == null) {
+    final endHandlerPosition = _clockPainter.endHandlerPosition;
+    if (endHandlerPosition == null) {
       setState(() {
         _activeTime = ActiveTime.End;
       });
       return false;
     }
 
-    Offset globalEndOffset = circle.localToGlobal(
-      _clockPainter.endHandlerPosition,
-    );
+    Offset globalEndOffset = circle.localToGlobal(endHandlerPosition);
 
     if (globalPoint.dx < globalEndOffset.dx + snap &&
         globalPoint.dx > globalEndOffset.dx - snap &&
@@ -584,7 +582,7 @@ class TimeRangePickerState extends State<TimeRangePicker>
     _updateTimeAndSnapAngle(_activeTime!, dir);
   }
 
-  _updateTimeAndSnapAngle(ActiveTime type, double angle) {
+  void _updateTimeAndSnapAngle(ActiveTime type, double angle) {
     var time = _angleToTime(angle - _offsetRad);
 
     //24 => 0
@@ -631,12 +629,12 @@ class TimeRangePickerState extends State<TimeRangePicker>
     });
   }
 
-  _submit() {
+  void _submit() {
     Navigator.of(context)
         .pop(TimeRange(startTime: _startTime, endTime: _endTime));
   }
 
-  _cancel() {
+  void _cancel() {
     Navigator.of(context).pop();
   }
 
